@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics Portfolio - Power BI & Business Intelligence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--light-bg);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-type {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .project-body {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-highlights {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights h4 {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .highlight-list {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .highlight-list li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .highlight-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .project-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features h4 {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .feature-item {
+            background: var(--light-bg);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .feature-item strong {
+            color: var(--primary-color);
+        }
+
+        .project-tech {
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .project-tech h4 {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            color: var(--secondary-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #7dd3fc;
+        }
+
+        .project-metrics {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">📊 Data Analytics Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Data Analytics & Business Intelligence</h1>
+            <p class="subtitle">Transforming complex data into actionable business insights</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Complete Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Records Analyzed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Data-Driven</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Airbnb -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">🏠 Airbnb Performance</div>
+                            <span class="project-type">Business Intelligence</span>
+                        </div>
+                        <div class="project-icon">📊</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Comprehensive Power BI dashboard analyzing Airbnb listings performance across multiple cities with advanced analytics including Pareto analysis, seasonality trends, and pricing intelligence.
+                        </p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Insights</h4>
+                            <ul class="highlight-list">
+                                <li>Superhosts achieve 23% higher average ratings</li>
+                                <li>Response time directly correlates with acceptance rates</li>
+                                <li>Neighborhoods command 35%+ premium pricing</li>
+                                <li>Seasonal pricing opportunities identified</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-features">
+                            <h4>Features</h4>
+                            <div class="features-grid">
+                                <div class="feature-item"><strong>Pareto Analysis:</strong> 80/20 insights</div>
+                                <div class="feature-item"><strong>Seasonality:</strong> Trend patterns</div>
+                                <div class="feature-item"><strong>Pricing Strategy:</strong> Optimization</div>
+                                <div class="feature-item"><strong>Geographic:</strong> Multi-level analysis</div>
+                            </div>
+                        </div>
+
+                        <div class="project-tech">
+                            <h4>Technologies</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">DAX</span>
+                                <span class="tech-tag">Data Modeling</span>
+                                <span class="tech-tag">CSV</span>
+                            </div>
+                        </div>
+
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">1000+</div>
+                                <div class="metric-label">Listings Analyzed</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">100K+</div>
+                                <div class="metric-label">Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Cricket -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">🏏 Cricket Analytics</div>
+                            <span class="project-type">Sports Analytics</span>
+                        </div>
+                        <div class="project-icon">🎯</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Comprehensive Power BI analytics dashboard analyzing cricket performance metrics including batting statistics, bowling analytics, and fielding efficiency across multiple dimensions.
+                        </p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Metrics</h4>
+                            <ul class="highlight-list">
+                                <li>Strike rate & batting average analysis</li>
+                                <li>Economy rate & bowling efficiency</li>
+                                <li>Performance by cricket phase</li>
+                                <li>Format-wise player profiles</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-features">
+                            <h4>Analytics Areas</h4>
+                            <div class="features-grid">
+                                <div class="feature-item"><strong>Batting:</strong> Phase-based</div>
+                                <div class="feature-item"><strong>Bowling:</strong> Pattern analysis</div>
+                                <div class="feature-item"><strong>Fielding:</strong> Catch/runout</div>
+                                <div class="feature-item"><strong>Match:</strong> Victory patterns</div>
+                            </div>
+                        </div>
+
+                        <div class="project-tech">
+                            <h4>Technologies</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">DAX</span>
+                                <span class="tech-tag">ESPN Data</span>
+                                <span class="tech-tag">Sports Analytics</span>
+                            </div>
+                        </div>
+
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">500+</div>
+                                <div class="metric-label">Players Profiled</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">3</div>
+                                <div class="metric-label">Cricket Formats</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: HR Analytics -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">👥 HR Analytics</div>
+                            <span class="project-type">Workforce Analytics</span>
+                        </div>
+                        <div class="project-icon">📈</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Comprehensive HR analytics dashboard tracking employee presence patterns, attendance trends, and workforce optimization metrics through interactive Power BI visualizations.
+                        </p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Insights</h4>
+                            <ul class="highlight-list">
+                                <li>Attendance pattern identification</li>
+                                <li>Remote work adoption analysis</li>
+                                <li>Absence cost impact calculation</li>
+                                <li>Predictive absence forecasting</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-features">
+                            <h4>Analytics Dimensions</h4>
+                            <div class="features-grid">
+                                <div class="feature-item"><strong>Attendance:</strong> Daily tracking</div>
+                                <div class="feature-item"><strong>Absence:</strong> Pattern analysis</div>
+                                <div class="feature-item"><strong>WFH:</strong> Adoption rates</div>
+                                <div class="feature-item"><strong>Predictive:</strong> Forecasting</div>
+                            </div>
+                        </div>
+
+                        <div class="project-tech">
+                            <h4>Technologies</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">HR Systems Integration</span>
+                                <span class="tech-tag">Predictive Analytics</span>
+                                <span class="tech-tag">DAX</span>
+                            </div>
+                        </div>
+
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">500+</div>
+                                <div class="metric-label">Employees Tracked</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">12+</div>
+                                <div class="metric-label">Months Data</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Panic Attack Study -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">🧠 Mental Health Analytics</div>
+                            <span class="project-type">Healthcare Analytics</span>
+                        </div>
+                        <div class="project-icon">🏥</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Healthcare analytics dashboard analyzing panic attack patterns using Snowflake & Power BI. Combines clinical research data with advanced visualization to uncover medical insights.
+                        </p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Discoveries</h4>
+                            <ul class="highlight-list">
+                                <li>Trigger pattern identification</li>
+                                <li>Symptom co-occurrence analysis</li>
+                                <li>Treatment effectiveness tracking</li>
+                                <li>Risk stratification modeling</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-features">
+                            <h4>Analytics Focus</h4>
+                            <div class="features-grid">
+                                <div class="feature-item"><strong>Triggers:</strong> Root cause</div>
+                                <div class="feature-item"><strong>Symptoms:</strong> Profiling</div>
+                                <div class="feature-item"><strong>Treatment:</strong> Correlation</div>
+                                <div class="feature-item"><strong>Risk:</strong> Stratification</div>
+                            </div>
+                        </div>
+
+                        <div class="project-tech">
+                            <h4>Technologies</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Snowflake</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Cloud Data Warehouse</span>
+                                <span class="tech-tag">Medical Analytics</span>
+                            </div>
+                        </div>
+
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">10K+</div>
+                                <div class="metric-label">Patient Records</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">50+</div>
+                                <div class="metric-label">Dimensions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills & Expertise</h2>
+            
+            <div class="skills-section">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>📊 BI & Visualization</h3>
+                        <ul class="skill-list">
+                            <li>Power BI (Desktop & Service)</li>
+                            <li>Advanced DAX Development</li>
+                            <li>Dashboard Design & UX</li>
+                            <li>Performance Optimization</li>
+                            <li>Interactive Reporting</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>💾 Data & Databases</h3>
+                        <ul class="skill-list">
+                            <li>SQL Query Development</li>
+                            <li>Data Modeling (Star Schema)</li>
+                            <li>ETL & Data Pipelines</li>
+                            <li>Snowflake (Cloud DW)</li>
+                            <li>Data Quality & Validation</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>📈 Analytics & Insights</h3>
+                        <ul class="skill-list">
+                            <li>Business Intelligence</li>
+                            <li>Predictive Analytics</li>
+                            <li>Pareto Analysis</li>
+                            <li>Trend & Seasonality Analysis</li>
+                            <li>Statistical Analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>🎯 Domain Expertise</h3>
+                        <ul class="skill-list">
+                            <li>Real Estate Analytics</li>
+                            <li>Sports Analytics</li>
+                            <li>HR & Workforce Analytics</li>
+                            <li>Healthcare Analytics</li>
+                            <li>Business Strategy</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>💡 Analytical Methods</h3>
+                        <ul class="skill-list">
+                            <li>Problem Solving & Root Cause</li>
+                            <li>Data Storytelling</li>
+                            <li>Stakeholder Communication</li>
+                            <li>Business Requirements</li>
+                            <li>Process Improvement</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>🔧 Tools & Platforms</h3>
+                        <ul class="skill-list">
+                            <li>Microsoft Excel (Advanced)</li>
+                            <li>Python & Pandas (Data)</li>
+                            <li>Git & Version Control</li>
+                            <li>Cloud Platforms (Azure)</li>
+                            <li>Data Integration Tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    I'm passionate about transforming data into actionable insights. Interested in discussing a project or 
+                    exploring opportunities? Let's connect!
+                </p>
+
+                <div class="social-links" style="padding: 2rem 0; border-radius: 8px; background: var(--light-bg);">
+                    <a href="https://linkedin.com" target="_blank">🔗 LinkedIn</a>
+                    <a href="https://github.com" target="_blank">💻 GitHub</a>
+                    <a href="mailto:your.email@example.com">📧 Email</a>
+                </div>
+
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                    <strong>Ready to collaborate?</strong> Feel free to reach out or explore my projects on GitHub.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">© 2026 Data Analytics Portfolio. Specialized in Power BI, Business Intelligence & Data Analysis.</p>
+        </div>
+    </footer>
+</body>
+</html>
