@@ -443,6 +443,39 @@
             background: linear-gradient(to right, transparent, var(--border-color), transparent);
             margin: 3rem 0;
         }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            z-index: 99;
+            transition: opacity 0.3s, background 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        #backToTop:hover {
+            background: var(--secondary-color);
+            opacity: 0.9;
+        }
+
+        #backToTop.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -451,8 +484,11 @@
         <nav>
             <div class="logo">📊 Data Analytics Portfolio</div>
             <ul class="nav-links">
+                <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -464,6 +500,10 @@
             <p style="font-size: 1.2rem; margin-bottom: 0.5rem; opacity: 0.95;">Hi, I'm Malavika Madhu</p>
             <h1>Data Analytics & Business Intelligence</h1>
             <p class="subtitle">Certified Data Analyst | Seeking opportunities | Power BI • SQL • Cloud Analytics | Transforming data into actionable business insights</p>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#projects" style="background: var(--accent-color); color: white; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">View Projects</a>
+                <a href="#contact" style="background: rgba(255, 255, 255, 0.2); color: white; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; border: 2px solid white; transition: background 0.3s;" onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">Contact Me</a>
+            </div>
             <div class="hero-stats">
                 <div class="stat">
                     <div class="stat-number">4+</div>
@@ -481,7 +521,46 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <div class="divider"></div>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            
+            <div style="max-width: 1000px; margin: 0 auto;">
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: 1.05rem;">
+                        I'm a Certified Data Analyst with a passion for transforming raw data into clear, actionable business insights. With expertise in Power BI, SQL, and cloud analytics platforms, I help organizations make data-driven decisions that fuel growth and efficiency.
+                    </p>
+                    
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: 1.05rem;">
+                        My background spans multiple domains including Business Intelligence, Sports Analytics, HR Analytics, and Healthcare Analytics. I specialize in designing interactive dashboards, developing complex DAX calculations, and translating business requirements into data solutions that drive measurable impact.
+                    </p>
+                    
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">
+                        I'm dedicated to continuous learning and staying updated with the latest trends in data analytics. When I'm not analyzing data, I enjoy exploring sports analytics and solving complex business problems through data-driven approaches.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Mindset:</strong> Data-Driven</p>
+                        </div>
+                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Approach:</strong> Strategic</p>
+                        </div>
+                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Focus:</strong> Business Impact</p>
+                        </div>
+                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Goal:</strong> Insights-Driven</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
     <section id="projects">
         <div class="container">
             <h2>Featured Projects</h2>
@@ -713,14 +792,78 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- Skills Section -->
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Experience 1 -->
+                <div style="display: grid; grid-template-columns: 200px 1fr; gap: 2rem; margin-bottom: 2rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <div>
+                        <h4 style="color: var(--primary-color); margin: 0 0 0.5rem 0; font-size: 1rem;">Data Analyst</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Company Name</p>
+                        <p style="color: var(--accent-color); font-size: 0.85rem; margin: 0.5rem 0 0 0; font-weight: 600;">2024 - Present</p>
+                    </div>
+                    <div>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary);">
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Developed interactive Power BI dashboards for key stakeholders
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Optimized SQL queries and improved data warehouse performance
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Conducted business requirements analysis and provided data insights
+                            </li>
+                            <li style="padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Supported decision-making through comprehensive data analysis
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div style="display: grid; grid-template-columns: 200px 1fr; gap: 2rem; margin-bottom: 2rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <div>
+                        <h4 style="color: var(--primary-color); margin: 0 0 0.5rem 0; font-size: 1rem;">Training & Projects</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Professional Development</p>
+                        <p style="color: var(--accent-color); font-size: 0.85rem; margin: 0.5rem 0 0 0; font-weight: 600;">2022 - 2024</p>
+                    </div>
+                    <div>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary);">
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Built end-to-end dashboards for Airbnb, Cricket, HR, and Healthcare domains
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Mastered advanced DAX formulas and power query transformations
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Practiced complex SQL queries and data modeling techniques
+                            </li>
+                            <li style="padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
+                                Developed proficiency in cloud data warehousing with Snowflake
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="skills">
         <div class="container">
             <h2>Technical Skills & Expertise</h2>
@@ -804,7 +947,86 @@
 
     <div class="divider"></div>
 
-    <!-- Certifications Section -->
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--accent-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <div>
+                        <h4 style="color: var(--primary-color); margin: 0 0 0.5rem 0; font-size: 1rem;">Bachelor's Degree</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Computer Science / IT / Data Science</p>
+                        <p style="color: var(--accent-color); font-size: 0.85rem; margin: 0.5rem 0 0 0; font-weight: 600;">Institution Name • Year</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0 0 1rem 0;">
+                            Strong foundation in data analysis, statistics, and database fundamentals. Coursework included data structures, databases, and business intelligence concepts that laid the groundwork for advanced analytics expertise.
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div style="background: var(--light-bg); padding: 0.8rem; border-radius: 6px;">
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Database</strong><br>SQL & Design</p>
+                            </div>
+                            <div style="background: var(--light-bg); padding: 0.8rem; border-radius: 6px;">
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Statistics</strong><br>Data Analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Services</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <!-- Service 1 -->
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Dashboard Development</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Build KPI-driven Power BI dashboards and reports for strategic decision-making and performance tracking.
+                    </p>
+                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Power BI • DAX • Data Modeling</span>
+                </div>
+
+                <!-- Service 2 -->
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Data Analysis & Reporting</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Analyze data to identify trends, anomalies, and opportunities. Deliver actionable insights through comprehensive reports.
+                    </p>
+                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">SQL • Python • Statistics</span>
+                </div>
+
+                <!-- Service 3 -->
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">☁️</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Cloud Data Warehousing</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Design and optimize cloud data solutions using Snowflake and Azure. Ensure scalable data architecture.
+                    </p>
+                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Snowflake • Azure • ETL</span>
+                </div>
+
+                <!-- Service 4 -->
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">💡</div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Business Intelligence Consulting</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                        Translate business requirements into data solutions. Provide strategic guidance on BI initiatives and optimization.
+                    </p>
+                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Strategy • Requirements • Optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="certifications">
         <div class="container">
             <h2>Certifications & Credentials</h2>
@@ -831,26 +1053,83 @@
 
     <div class="divider"></div>
 
+    <!-- Career Objective Section -->
+    <section id="objective">
+        <div class="container">
+            <h2>Career Objective</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(30, 64, 175, 0.1)); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent-color);">
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin: 0;">
+                        "I aim to grow into a strategic data analyst role that drives organizational growth by delivering clean, reliable data and insightful dashboards 
+                        that support data-driven decision-making. I'm committed to continuous learning and leveraging advanced analytics to solve complex business challenges 
+                        and create measurable impact."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2>Get In Touch</h2>
             
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
-                    I'm passionate about transforming data into actionable insights. Interested in discussing a project or 
-                    exploring opportunities? Let's connect!
-                </p>
-
-                <div class="social-links" style="padding: 2rem 0; border-radius: 8px; background: var(--light-bg);">
-                    <a href="https://www.linkedin.com/in/malavika-m-36805b171/" target="_blank">🔗 LinkedIn</a>
-                    <a href="https://github.com/madhumalavika" target="_blank">💻 GitHub</a>
-                    <a href="mailto:malavika.madhu3192@gmail.com">📧 Email</a>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8;">
+                        Feel free to reach out for collaborations or opportunities. Whether you have a project in mind or just want to discuss data analytics, I'd love to hear from you!
+                    </p>
                 </div>
 
-                <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                    <strong>Ready to collaborate?</strong> Feel free to reach out or explore my projects on GitHub.
-                </p>
+                <!-- Quick Contact Links -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=malavika.madhu3192@gmail.com" target="blank_" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
+                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">Email Me</p>
+                    </a>
+
+                    <a href="https://wa.me/1234567890" target="_blank" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💬</div>
+                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">WhatsApp Me</p>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/malavika-m-36805b171/" target="_blank" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔗</div>
+                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">LinkedIn</p>
+                    </a>
+
+                    <a href="https://github.com/madhumalavika" target="_blank" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
+                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">GitHub</p>
+                    </a>
+                </div>
+
+                <!-- Contact Form -->
+                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.3rem; text-align: center;">Send Me a Message</h3>
+                    
+                    <form onsubmit="handleFormSubmit(event)" style="display: grid; gap: 1.2rem;">
+                        <div>
+                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Name *</label>
+                            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='var(--border-color)'" onfocus="this.style.borderColor='var(--primary-color)'" onblur="this.style.borderColor='var(--border-color)'" />
+                        </div>
+
+                        <div>
+                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Email *</label>
+                            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='var(--border-color)'" onfocus="this.style.borderColor='var(--primary-color)'" onblur="this.style.borderColor='var(--border-color)'" />
+                        </div>
+
+                        <div>
+                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Message *</label>
+                            <textarea name="message" rows="5" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 1rem; resize: vertical; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='var(--border-color)'" onfocus="this.style.borderColor='var(--primary-color)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
+                        </div>
+
+                        <button type="submit" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 0.95rem 2rem; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: opacity 0.3s, transform 0.3s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)'" onmouseout="this.style.opacity='1'; this.style.transform='scale(1)'">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -858,8 +1137,101 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p class="footer-text">© 2026 Data Analytics Portfolio. Specialized in Power BI, Business Intelligence & Data Analysis.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#about" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About Me</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#projects" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Projects</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#experience" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Experience</a></li>
+                        <li><a href="#skills" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Skills</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Resources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Services</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#education" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Education</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#certifications" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Certifications</a></li>
+                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 1rem;">Connect</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="https://www.linkedin.com/in/malavika-m-36805b171/" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">LinkedIn</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="https://github.com/madhumalavika" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">GitHub</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="mailto:malavika.madhu3192@gmail.com" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Email</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center;">
+                <p class="footer-text">© 2026 Malavika Madhu. All rights reserved. | Specialized in Data Analytics, Power BI & Business Intelligence</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top">↑</button>
+
+    <script>
+        // Back to Top Button Functionality
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Handle Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const name = form.querySelector('input[name="name"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const message = form.querySelector('textarea[name="message"]').value;
+            
+            // Create mailto link with subject and body
+            const subject = `New Message from ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            const mailtoLink = `mailto:malavika.madhu3192@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your message! Your email client will open to send the message.');
+            
+            // Reset form
+            form.reset();
+        }
+    </script>
 </body>
 </html>
