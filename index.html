@@ -21,12 +21,25 @@
             --text-primary: #1e293b;
             --text-secondary: #64748b;
             --border-color: #e2e8f0;
+            --section-light: #f0f9ff;
+            --section-dark: #f5f3ff;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
+        /* Alternating section backgrounds */
+        section:nth-child(even) {
+            background-color: var(--section-light);
+        }
+
+        section:nth-child(odd) {
+            background-color: var(--light-bg);
+        }
+
+        /* Alternating section backgrounds */
+        section:nth-child(even) {
+            background-color: var(--section-light);
+        }
+
+        section:nth-child(odd) {
             background-color: var(--light-bg);
         }
 
@@ -1091,11 +1104,6 @@
                         <p style="color: var(--primary-color); font-weight: 600; margin: 0;">Email Me</p>
                     </a>
 
-                    <a href="https://wa.me/1234567890" target="_blank" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💬</div>
-                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">WhatsApp Me</p>
-                    </a>
-
                     <a href="https://www.linkedin.com/in/malavika-m-36805b171/" target="_blank" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
                         <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔗</div>
                         <p style="color: var(--primary-color); font-weight: 600; margin: 0;">LinkedIn</p>
@@ -1235,3 +1243,5 @@
     </script>
 </body>
 </html>
+
+
