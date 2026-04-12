@@ -1087,33 +1087,6 @@
 
     <div class="divider"></div>
 
-    <!-- Certifications Section -->
-    <section id="certifications">
-        <div class="container">
-            <h2>Certifications & Credentials</h2>
-            
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
-                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Power BI Data Analyst Associate</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Microsoft Certification</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Professional credential demonstrating advanced expertise in Power BI development, DAX, and business intelligence solutions.</p>
-                    </div>
-
-                    <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">☁️</div>
-                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Azure AZ-900 Fundamentals</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Microsoft Azure Certification</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Certified knowledge of cloud services and Azure fundamentals, validating foundational cloud computing concepts and services.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -1141,7 +1114,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p class="footer-text">ÃÂ© 2026 Data Analytics Portfolio. Specialized in Power BI, Business Intelligence & Data Analysis.</p>
+            <p class="footer-text">© 2026 Data Analytics Portfolio. Specialized in Power BI, Business Intelligence & Data Analysis.</p>
         </div>
     </footer>
 
@@ -1156,7 +1129,7 @@
         const currentTheme = localStorage.getItem('theme') || 'light';
         if (currentTheme === 'dark') {
             bodyElement.classList.add('dark-mode');
-            themeToggle.textContent = 'Ã¢Ëâ¬Ã¯Â¸Â';
+            themeToggle.textContent = '🙘';
         }
 
         // Theme toggle click handler
@@ -1165,7 +1138,7 @@
             
             // Update toggle button text and save preference
             if (bodyElement.classList.contains('dark-mode')) {
-                themeToggle.textContent = 'Ã¢Ëâ¬Ã¯Â¸Â';
+                themeToggle.textContent = '🙘';
                 localStorage.setItem('theme', 'dark');
             } else {
                 themeToggle.textContent = 'Ã°Å¸Åâ¢';
@@ -1176,7 +1149,7 @@
         // Prefers color scheme detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
             bodyElement.classList.add('dark-mode');
-            themeToggle.textContent = 'Ã¢Ëâ¬Ã¯Â¸Â';
+            themeToggle.textContent = '🙘';
         }
     </script>
 </body>
