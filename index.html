@@ -1,1247 +1,200 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analytics Portfolio - Power BI & Business Intelligence</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #f59e0b;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --border-color: #e2e8f0;
-            --section-light: #f0f9ff;
-            --section-dark: #f5f3ff;
-        }
-
-        /* Alternating section backgrounds */
-        section:nth-child(even) {
-            background-color: var(--section-light);
-        }
-
-        section:nth-child(odd) {
-            background-color: var(--light-bg);
-        }
-
-        /* Alternating section backgrounds */
-        section:nth-child(even) {
-            background-color: var(--section-light);
-        }
-
-        section:nth-child(odd) {
-            background-color: var(--light-bg);
-        }
-
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-color);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 4rem 0;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-type {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .project-body {
-            padding: 2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .project-highlights {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-highlights h4 {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .highlight-list {
-            list-style: none;
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .highlight-list li {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .highlight-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .project-features {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-features h4 {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .feature-item {
-            background: var(--light-bg);
-            padding: 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .feature-item strong {
-            color: var(--primary-color);
-        }
-
-        .project-tech {
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
-
-        .project-tech h4 {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-            color: var(--secondary-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid #7dd3fc;
-        }
-
-        .project-metrics {
-            background: var(--light-bg);
-            padding: 1rem;
-            border-radius: 6px;
-            margin-top: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .metric-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.3rem;
-        }
-
-        /* Skills Section */
-        .skills-section {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            padding: 1.5rem;
-            background: var(--light-bg);
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .skill-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .skill-list {
-            list-style: none;
-            display: grid;
-            gap: 0.7rem;
-        }
-
-        .skill-list li {
-            color: var(--text-secondary);
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .skill-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-bg);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-text {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--border-color), transparent);
-            margin: 3rem 0;
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Back to Top Button */
-        #backToTop {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: none;
-            z-index: 99;
-            transition: opacity 0.3s, background 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        #backToTop:hover {
-            background: var(--secondary-color);
-            opacity: 0.9;
-        }
-
-        #backToTop.show {
-            display: block;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Madhumalavika Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">📊 Data Analytics Portfolio</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">Madhumalavika</h1>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/madhumalavika" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
+  <main>
     <section class="hero">
-        <div class="hero-content">
-            <p style="font-size: 1.2rem; margin-bottom: 0.5rem; opacity: 0.95;">Hi, I'm Malavika Madhu</p>
-            <h1>Data Analytics & Business Intelligence</h1>
-            <p class="subtitle">Certified Data Analyst | Seeking opportunities | Power BI • SQL • Cloud Analytics | Transforming data into actionable business insights</p>
-            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="#projects" style="background: var(--accent-color); color: white; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">View Projects</a>
-                <a href="#contact" style="background: rgba(255, 255, 255, 0.2); color: white; padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; border: 2px solid white; transition: background 0.3s;" onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">Contact Me</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">4+</div>
-                    <div class="stat-label">Complete Projects</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">1M+</div>
-                    <div class="stat-label">Records Analyzed</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Data-Driven</div>
-                </div>
-            </div>
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Data Analyst Portfolio</h2>
+          <p>Visualizations, dashboards, and analytics projects using Power BI, SQL, Python.</p>
+          <a class="btn btn-primary" href="#projects">See Projects</a>
         </div>
+        <div class="hero-visual">
+          <img src="images/hero-dashboard.png" alt="Sample dashboard" width="720" height="405" loading="lazy">
+        </div>
+      </div>
     </section>
 
-    <div class="divider"></div>
+    <section id="projects" class="projects container">
+      <h3 class="section-title">Featured Projects</h3>
 
-    <!-- About Me Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            
-            <div style="max-width: 1000px; margin: 0 auto;">
-                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: 1.05rem;">
-                        I'm a Certified Data Analyst with a passion for transforming raw data into clear, actionable business insights. With expertise in Power BI, SQL, and cloud analytics platforms, I help organizations make data-driven decisions that fuel growth and efficiency.
-                    </p>
-                    
-                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; font-size: 1.05rem;">
-                        My background spans multiple domains including Business Intelligence, Sports Analytics, HR Analytics, and Healthcare Analytics. I specialize in designing interactive dashboards, developing complex DAX calculations, and translating business requirements into data solutions that drive measurable impact.
-                    </p>
-                    
-                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">
-                        I'm dedicated to continuous learning and staying updated with the latest trends in data analytics. When I'm not analyzing data, I enjoy exploring sports analytics and solving complex business problems through data-driven approaches.
-                    </p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Mindset:</strong> Data-Driven</p>
-                        </div>
-                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Approach:</strong> Strategic</p>
-                        </div>
-                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Focus:</strong> Business Impact</p>
-                        </div>
-                        <div style="background: var(--light-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-color);">
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;"><strong style="color: var(--primary-color);">Goal:</strong> Insights-Driven</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="grid">
+        <!-- Project 1: Global Airbnb Performance -->
+        <article class="project-card">
+          <div class="slideshow-container">
+            <div class="slide fade">
+              <img src="images/projects/airbnb/Global Airbnb Performance Overview_Dashboard1.png" alt="Airbnb Performance Overview dashboard">
             </div>
-        </div>
+            <div class="slide fade">
+              <img src="images/projects/airbnb/Global Airbnb Performance Ratings_Dashboard2.png" alt="Airbnb Ratings dashboard">
+            </div>
+            <div class="slide fade">
+              <img src="images/projects/airbnb/Global Airbnb Performance Reviews_Dashboard3.png" alt="Airbnb Reviews dashboard">
+            </div>
+            <button class="prev" onclick="changeSlide(-1, this)">❮</button>
+            <button class="next" onclick="changeSlide(1, this)">❯</button>
+            <div class="slide-dots">
+              <span class="dot" onclick="currentSlide(1, this)"></span>
+              <span class="dot" onclick="currentSlide(2, this)"></span>
+              <span class="dot" onclick="currentSlide(3, this)"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Global Airbnb Performance</h4>
+            <div class="meta">
+              <span class="badge">Power BI</span>
+              <span class="tools">DAX • Data Modeling</span>
+            </div>
+            <p class="summary">Comprehensive analysis of Airbnb performance metrics across regions. Overview, ratings, and review analysis dashboards.</p>
+            <div class="gallery-previews">
+              <a class="link" href="https://github.com/madhumalavika/airbnb-performance-dashboard" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Cricket Data Analysis -->
+        <article class="project-card">
+          <div class="slideshow-container">
+            <div class="slide fade">
+              <img src="images/projects/cricket/Cricket Data Analysis_Batting_Dashboard1.PNG" alt="Cricket Batting dashboard">
+            </div>
+            <div class="slide fade">
+              <img src="images/projects/cricket/Cricket Data Analysis_Bowling_Dashboard2.PNG" alt="Cricket Bowling dashboard">
+            </div>
+            <div class="slide fade">
+              <img src="images/projects/cricket/Cricket Data Analysis_Fielding_Dashboard3.PNG" alt="Cricket Fielding dashboard">
+            </div>
+            <button class="prev" onclick="changeSlide(-1, this)">❮</button>
+            <button class="next" onclick="changeSlide(1, this)">❯</button>
+            <div class="slide-dots">
+              <span class="dot" onclick="currentSlide(1, this)"></span>
+              <span class="dot" onclick="currentSlide(2, this)"></span>
+              <span class="dot" onclick="currentSlide(3, this)"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Cricket Data Analysis</h4>
+            <div class="meta">
+              <span class="badge">Power BI</span>
+              <span class="tools">Data Visualization • Analytics</span>
+            </div>
+            <p class="summary">In-depth cricket performance analysis covering batting, bowling, and fielding metrics with comprehensive dashboards.</p>
+            <div class="gallery-previews">
+              <a class="link" href="https://github.com/madhumalavika/cricket-data-analysis" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Snowflake Panic Attack Study -->
+        <article class="project-card">
+          <div class="slideshow-container">
+            <div class="slide fade">
+              <img src="images/projects/snowflake/Snowflake-Power BI Panic Attack Study_Dashboard1.PNG" alt="Panic Attack Study Dashboard 1">
+            </div>
+            <div class="slide fade">
+              <img src="images/projects/snowflake/Snowflake-Power BI Panic Attack Study_Dashboard2.PNG" alt="Panic Attack Study Dashboard 2">
+            </div>
+            <div class="slide fade">
+              <img src="images/projects/snowflake/Snowflake-Power BI Panic Attack Study_Dashboard3.PNG" alt="Panic Attack Study Dashboard 3">
+            </div>
+            <div class="slide fade">
+              <img src="images/projects/snowflake/Snowflake-Power BI Panic Attack Study_Dashboard4.PNG" alt="Panic Attack Study Dashboard 4">
+            </div>
+            <button class="prev" onclick="changeSlide(-1, this)">❮</button>
+            <button class="next" onclick="changeSlide(1, this)">❯</button>
+            <div class="slide-dots">
+              <span class="dot" onclick="currentSlide(1, this)"></span>
+              <span class="dot" onclick="currentSlide(2, this)"></span>
+              <span class="dot" onclick="currentSlide(3, this)"></span>
+              <span class="dot" onclick="currentSlide(4, this)"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Snowflake-Power BI: Panic Attack Study</h4>
+            <div class="meta">
+              <span class="badge">Power BI</span>
+              <span class="tools">Snowflake • ETL</span>
+            </div>
+            <p class="summary">Advanced analytics study integrating Snowflake with Power BI for panic attack pattern analysis and insights.</p>
+            <div class="gallery-previews">
+              <a class="link" href="https://github.com/madhumalavika/panic-attack-study" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Employee Presence Analysis -->
+        <article class="project-card">
+          <div class="slideshow-container">
+            <div class="slide fade">
+              <img src="images/projects/hr/Employee_Presence_Analysis-HR-Analytics Dashboard.PNG" alt="HR Analytics Dashboard">
+            </div>
+            <button class="prev" onclick="changeSlide(-1, this)">❮</button>
+            <button class="next" onclick="changeSlide(1, this)">❯</button>
+            <div class="slide-dots">
+              <span class="dot" onclick="currentSlide(1, this)"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Employee Presence Analysis - HR Analytics</h4>
+            <div class="meta">
+              <span class="badge">Power BI</span>
+              <span class="tools">KPIs • HR Metrics</span>
+            </div>
+            <p class="summary">HR dashboard tracking employee attendance, presence patterns, and workforce analytics for strategic HR decisions.</p>
+            <div class="gallery-previews">
+              <a class="link" href="https://github.com/madhumalavika/hr-analytics-dashboard" target="_blank" rel="noopener noreferrer">View Code</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </section>
 
-    <div class="divider"></div>
-    <section id="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            
-            <div class="projects-grid">
-                <!-- Project 1: Airbnb -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-title">🏠 Airbnb Performance</div>
-                            <span class="project-type">Business Intelligence</span>
-                        </div>
-                        <div class="project-icon">📊</div>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            Comprehensive Power BI dashboard analyzing Airbnb listings performance across multiple cities with advanced analytics including Pareto analysis, seasonality trends, and pricing intelligence.
-                        </p>
-                        
-                        <div class="project-highlights">
-                            <h4>Key Insights</h4>
-                            <ul class="highlight-list">
-                                <li>Superhosts achieve 23% higher average ratings</li>
-                                <li>Response time directly correlates with acceptance rates</li>
-                                <li>Neighborhoods command 35%+ premium pricing</li>
-                                <li>Seasonal pricing opportunities identified</li>
-                            </ul>
-                        </div>
+    <section id="embed-demo" class="container embed-demo">
+      <h3 class="section-title">Interactive Demo</h3>
+      <p class="muted">If you want interactive reports, publish to Power BI and paste the public embed link below.</p>
 
-                        <div class="project-features">
-                            <h4>Features</h4>
-                            <div class="features-grid">
-                                <div class="feature-item"><strong>Pareto Analysis:</strong> 80/20 insights</div>
-                                <div class="feature-item"><strong>Seasonality:</strong> Trend patterns</div>
-                                <div class="feature-item"><strong>Pricing Strategy:</strong> Optimization</div>
-                                <div class="feature-item"><strong>Geographic:</strong> Multi-level analysis</div>
-                            </div>
-                        </div>
-
-                        <div class="project-tech">
-                            <h4>Technologies</h4>
-                            <div class="tech-tags">
-                                <span class="tech-tag">Power BI</span>
-                                <span class="tech-tag">DAX</span>
-                                <span class="tech-tag">Data Modeling</span>
-                                <span class="tech-tag">CSV</span>
-                            </div>
-                        </div>
-
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <div class="metric-value">1000+</div>
-                                <div class="metric-label">Listings Analyzed</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value">100K+</div>
-                                <div class="metric-label">Reviews</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Cricket -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-title">🏏 Cricket Analytics</div>
-                            <span class="project-type">Sports Analytics</span>
-                        </div>
-                        <div class="project-icon">🎯</div>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            Comprehensive Power BI analytics dashboard analyzing cricket performance metrics including batting statistics, bowling analytics, and fielding efficiency across multiple dimensions.
-                        </p>
-                        
-                        <div class="project-highlights">
-                            <h4>Key Metrics</h4>
-                            <ul class="highlight-list">
-                                <li>Strike rate & batting average analysis</li>
-                                <li>Economy rate & bowling efficiency</li>
-                                <li>Performance by cricket phase</li>
-                                <li>Format-wise player profiles</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-features">
-                            <h4>Analytics Areas</h4>
-                            <div class="features-grid">
-                                <div class="feature-item"><strong>Batting:</strong> Phase-based</div>
-                                <div class="feature-item"><strong>Bowling:</strong> Pattern analysis</div>
-                                <div class="feature-item"><strong>Fielding:</strong> Catch/runout</div>
-                                <div class="feature-item"><strong>Match:</strong> Victory patterns</div>
-                            </div>
-                        </div>
-
-                        <div class="project-tech">
-                            <h4>Technologies</h4>
-                            <div class="tech-tags">
-                                <span class="tech-tag">Power BI</span>
-                                <span class="tech-tag">DAX</span>
-                                <span class="tech-tag">ESPN Data</span>
-                                <span class="tech-tag">Sports Analytics</span>
-                            </div>
-                        </div>
-
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <div class="metric-value">500+</div>
-                                <div class="metric-label">Players Profiled</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value">3</div>
-                                <div class="metric-label">Cricket Formats</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: HR Analytics -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-title">👥 HR Analytics</div>
-                            <span class="project-type">Workforce Analytics</span>
-                        </div>
-                        <div class="project-icon">📈</div>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            Comprehensive HR analytics dashboard tracking employee presence patterns, attendance trends, and workforce optimization metrics through interactive Power BI visualizations.
-                        </p>
-                        
-                        <div class="project-highlights">
-                            <h4>Key Insights</h4>
-                            <ul class="highlight-list">
-                                <li>Attendance pattern identification</li>
-                                <li>Remote work adoption analysis</li>
-                                <li>Absence cost impact calculation</li>
-                                <li>Predictive absence forecasting</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-features">
-                            <h4>Analytics Dimensions</h4>
-                            <div class="features-grid">
-                                <div class="feature-item"><strong>Attendance:</strong> Daily tracking</div>
-                                <div class="feature-item"><strong>Absence:</strong> Pattern analysis</div>
-                                <div class="feature-item"><strong>WFH:</strong> Adoption rates</div>
-                                <div class="feature-item"><strong>Predictive:</strong> Forecasting</div>
-                            </div>
-                        </div>
-
-                        <div class="project-tech">
-                            <h4>Technologies</h4>
-                            <div class="tech-tags">
-                                <span class="tech-tag">Power BI</span>
-                                <span class="tech-tag">HR Systems Integration</span>
-                                <span class="tech-tag">Predictive Analytics</span>
-                                <span class="tech-tag">DAX</span>
-                            </div>
-                        </div>
-
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <div class="metric-value">500+</div>
-                                <div class="metric-label">Employees Tracked</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value">12+</div>
-                                <div class="metric-label">Months Data</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: Panic Attack Study -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <div class="project-title">🧠 Mental Health Analytics</div>
-                            <span class="project-type">Healthcare Analytics</span>
-                        </div>
-                        <div class="project-icon">🏥</div>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            Healthcare analytics dashboard analyzing panic attack patterns using Snowflake & Power BI. Combines clinical research data with advanced visualization to uncover medical insights.
-                        </p>
-                        
-                        <div class="project-highlights">
-                            <h4>Key Discoveries</h4>
-                            <ul class="highlight-list">
-                                <li>Trigger pattern identification</li>
-                                <li>Symptom co-occurrence analysis</li>
-                                <li>Treatment effectiveness tracking</li>
-                                <li>Risk stratification modeling</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-features">
-                            <h4>Analytics Focus</h4>
-                            <div class="features-grid">
-                                <div class="feature-item"><strong>Triggers:</strong> Root cause</div>
-                                <div class="feature-item"><strong>Symptoms:</strong> Profiling</div>
-                                <div class="feature-item"><strong>Treatment:</strong> Correlation</div>
-                                <div class="feature-item"><strong>Risk:</strong> Stratification</div>
-                            </div>
-                        </div>
-
-                        <div class="project-tech">
-                            <h4>Technologies</h4>
-                            <div class="tech-tags">
-                                <span class="tech-tag">Snowflake</span>
-                                <span class="tech-tag">Power BI</span>
-                                <span class="tech-tag">Cloud Data Warehouse</span>
-                                <span class="tech-tag">Medical Analytics</span>
-                            </div>
-                        </div>
-
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <div class="metric-value">10K+</div>
-                                <div class="metric-label">Patient Records</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value">50+</div>
-                                <div class="metric-label">Dimensions</div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
+      <div class="embed-wrap">
+        <iframe id="powerbi-iframe" src="" title="Power BI report" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
     </section>
 
-    <div class="divider"></div>
+    <section id="about" class="container about">
+      <h3 class="section-title">About</h3>
+      <p>I am a data analyst focused on & Links</h3>
+      <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/madhumalavika" target="_blank" rel="noopener noreferrer">github.com/madhumalavika
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            
-            <div style="max-width: 900px; margin: 0 auto;">
-                <!-- Experience 1 -->
-                <div style="display: grid; grid-template-columns: 200px 1fr; gap: 2rem; margin-bottom: 2rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                    <div>
-                        <h4 style="color: var(--primary-color); margin: 0 0 0.5rem 0; font-size: 1rem;">Data Analyst</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Company Name</p>
-                        <p style="color: var(--accent-color); font-size: 0.85rem; margin: 0.5rem 0 0 0; font-weight: 600;">2024 - Present</p>
-                    </div>
-                    <div>
-                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary);">
-                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Developed interactive Power BI dashboards for key stakeholders
-                            </li>
-                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Optimized SQL queries and improved data warehouse performance
-                            </li>
-                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Conducted business requirements analysis and provided data insights
-                            </li>
-                            <li style="padding-left: 1.5rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Supported decision-making through comprehensive data analysis
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Experience 2 -->
-                <div style="display: grid; grid-template-columns: 200px 1fr; gap: 2rem; margin-bottom: 2rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--primary-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                    <div>
-                        <h4 style="color: var(--primary-color); margin: 0 0 0.5rem 0; font-size: 1rem;">Training & Projects</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Professional Development</p>
-                        <p style="color: var(--accent-color); font-size: 0.85rem; margin: 0.5rem 0 0 0; font-weight: 600;">2022 - 2024</p>
-                    </div>
-                    <div>
-                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary);">
-                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Built end-to-end dashboards for Airbnb, Cricket, HR, and Healthcare domains
-                            </li>
-                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Mastered advanced DAX formulas and power query transformations
-                            </li>
-                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Practiced complex SQL queries and data modeling techniques
-                            </li>
-                            <li style="padding-left: 1.5rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">→</span>
-                                Developed proficiency in cloud data warehousing with Snowflake
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="contact" class="container contact">
+      <h3 class="section-title">Contact</h3>
+      <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
     </section>
-    <section id="skills">
-        <div class="container">
-            <h2>Technical Skills & Expertise</h2>
-            
-            <div class="skills-section">
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>📊 BI & Visualization</h3>
-                        <ul class="skill-list">
-                            <li>Power BI (Desktop & Service)</li>
-                            <li>Advanced DAX Development</li>
-                            <li>Dashboard Design & UX</li>
-                            <li>Performance Optimization</li>
-                            <li>Interactive Reporting</li>
-                        </ul>
-                    </div>
+  </main>
 
-                    <div class="skill-category">
-                        <h3>💾 Data & Databases</h3>
-                        <ul class="skill-list">
-                            <li>SQL Query Development</li>
-                            <li>Complex Joins & Subqueries</li>
-                            <li>Window Functions & CTEs</li>
-                            <li>Query Optimization & Performance Tuning</li>
-                            <li>Stored Procedures & Functions</li>
-                            <li>Data Modeling (Star Schema)</li>
-                            <li>ETL & Data Pipelines</li>
-                            <li>Snowflake (Cloud DW)</li>
-                            <li>Data Quality & Validation</li>
-                            <li>Indexing & Constraint Management</li>
-                        </ul>
-                    </div>
+  <footer class="site-footer">
+    <div class="container">
+      <small>© Madhumalavika</small>
+    </div>
+  </footer>
 
-                    <div class="skill-category">
-                        <h3>📈 Analytics & Insights</h3>
-                        <ul class="skill-list">
-                            <li>Business Intelligence</li>
-                            <li>Predictive Analytics</li>
-                            <li>Pareto Analysis</li>
-                            <li>Trend & Seasonality Analysis</li>
-                            <li>Statistical Analysis</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>🎯 Domain Expertise</h3>
-                        <ul class="skill-list">
-                            <li>Real Estate Analytics</li>
-                            <li>Sports Analytics</li>
-                            <li>HR & Workforce Analytics</li>
-                            <li>Healthcare Analytics</li>
-                            <li>Business Strategy</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>💡 Analytical Methods</h3>
-                        <ul class="skill-list">
-                            <li>Problem Solving & Root Cause</li>
-                            <li>Data Storytelling</li>
-                            <li>Stakeholder Communication</li>
-                            <li>Business Requirements</li>
-                            <li>Process Improvement</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3>🔧 Tools & Platforms</h3>
-                        <ul class="skill-list">
-                            <li>Microsoft Excel (Advanced)</li>
-                            <li>Python & Pandas (Data)</li>
-                            <li>Git & Version Control</li>
-                            <li>Cloud Platforms (Azure)</li>
-                            <li>Data Integration Tools</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2>Education</h2>
-            
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border-left: 4px solid var(--accent-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                    <div>
-                        <h4 style="color: var(--primary-color); margin: 0 0 0.5rem 0; font-size: 1rem;">Bachelor's Degree</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Computer Science / IT / Data Science</p>
-                        <p style="color: var(--accent-color); font-size: 0.85rem; margin: 0.5rem 0 0 0; font-weight: 600;">Institution Name • Year</p>
-                    </div>
-                    <div>
-                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0 0 1rem 0;">
-                            Strong foundation in data analysis, statistics, and database fundamentals. Coursework included data structures, databases, and business intelligence concepts that laid the groundwork for advanced analytics expertise.
-                        </p>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-                            <div style="background: var(--light-bg); padding: 0.8rem; border-radius: 6px;">
-                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Database</strong><br>SQL & Design</p>
-                            </div>
-                            <div style="background: var(--light-bg); padding: 0.8rem; border-radius: 6px;">
-                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Statistics</strong><br>Data Analysis</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2>Services</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-                <!-- Service 1 -->
-                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Dashboard Development</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
-                        Build KPI-driven Power BI dashboards and reports for strategic decision-making and performance tracking.
-                    </p>
-                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Power BI • DAX • Data Modeling</span>
-                </div>
-
-                <!-- Service 2 -->
-                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Data Analysis & Reporting</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
-                        Analyze data to identify trends, anomalies, and opportunities. Deliver actionable insights through comprehensive reports.
-                    </p>
-                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">SQL • Python • Statistics</span>
-                </div>
-
-                <!-- Service 3 -->
-                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">☁️</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Cloud Data Warehousing</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
-                        Design and optimize cloud data solutions using Snowflake and Azure. Ensure scalable data architecture.
-                    </p>
-                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Snowflake • Azure • ETL</span>
-                </div>
-
-                <!-- Service 4 -->
-                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); text-align: center; transition: transform 0.3s;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">💡</div>
-                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Business Intelligence Consulting</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
-                        Translate business requirements into data solutions. Provide strategic guidance on BI initiatives and optimization.
-                    </p>
-                    <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">Strategy • Requirements • Optimization</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="certifications">
-        <div class="container">
-            <h2>Certifications & Credentials</h2>
-            
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
-                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Power BI Data Analyst Associate</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Microsoft Certification</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Professional credential demonstrating advanced expertise in Power BI development, DAX, and business intelligence solutions.</p>
-                    </div>
-
-                    <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">☁️</div>
-                        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.2rem;">Azure AZ-900 Fundamentals</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Microsoft Azure Certification</p>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Certified knowledge of cloud services and Azure fundamentals, validating foundational cloud computing concepts and services.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Career Objective Section -->
-    <section id="objective">
-        <div class="container">
-            <h2>Career Objective</h2>
-            
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(30, 64, 175, 0.1)); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent-color);">
-                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin: 0;">
-                        "I aim to grow into a strategic data analyst role that drives organizational growth by delivering clean, reliable data and insightful dashboards 
-                        that support data-driven decision-making. I'm committed to continuous learning and leveraging advanced analytics to solve complex business challenges 
-                        and create measurable impact."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <div style="text-align: center; margin-bottom: 3rem;">
-                    <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.8;">
-                        Feel free to reach out for collaborations or opportunities. Whether you have a project in mind or just want to discuss data analytics, I'd love to hear from you!
-                    </p>
-                </div>
-
-                <!-- Quick Contact Links -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=malavika.madhu3192@gmail.com" target="blank_" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
-                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">Email Me</p>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/malavika-m-36805b171/" target="_blank" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔗</div>
-                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">LinkedIn</p>
-                    </a>
-
-                    <a href="https://github.com/madhumalavika" target="_blank" style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.08)';">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
-                        <p style="color: var(--primary-color); font-weight: 600; margin: 0;">GitHub</p>
-                    </a>
-                </div>
-
-                <!-- Contact Form -->
-                <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.3rem; text-align: center;">Send Me a Message</h3>
-                    
-                    <form onsubmit="handleFormSubmit(event)" style="display: grid; gap: 1.2rem;">
-                        <div>
-                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Name *</label>
-                            <input type="text" name="name" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='var(--border-color)'" onfocus="this.style.borderColor='var(--primary-color)'" onblur="this.style.borderColor='var(--border-color)'" />
-                        </div>
-
-                        <div>
-                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Email *</label>
-                            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='var(--border-color)'" onfocus="this.style.borderColor='var(--primary-color)'" onblur="this.style.borderColor='var(--border-color)'" />
-                        </div>
-
-                        <div>
-                            <label style="display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Message *</label>
-                            <textarea name="message" rows="5" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 1rem; resize: vertical; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='var(--border-color)'" onfocus="this.style.borderColor='var(--primary-color)'" onblur="this.style.borderColor='var(--border-color)'"></textarea>
-                        </div>
-
-                        <button type="submit" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 0.95rem 2rem; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: opacity 0.3s, transform 0.3s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.02)'" onmouseout="this.style.opacity='1'; this.style.transform='scale(1)'">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 2rem; margin-bottom: 2rem;">
-                <div>
-                    <h4 style="color: white; margin-bottom: 1rem;">Quick Links</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem;"><a href="#about" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">About Me</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#projects" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Projects</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#experience" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Experience</a></li>
-                        <li><a href="#skills" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Skills</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 style="color: white; margin-bottom: 1rem;">Resources</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem;"><a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Services</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#education" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Education</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#certifications" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Certifications</a></li>
-                        <li><a href="#contact" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 style="color: white; margin-bottom: 1rem;">Connect</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem;"><a href="https://www.linkedin.com/in/malavika-m-36805b171/" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">LinkedIn</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="https://github.com/madhumalavika" target="_blank" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">GitHub</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="mailto:malavika.madhu3192@gmail.com" style="color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">Email</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center;">
-                <p class="footer-text">© 2026 Malavika Madhu. All rights reserved. | Specialized in Data Analytics, Power BI & Business Intelligence</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" title="Back to Top">↑</button>
-
-    <script>
-        // Back to Top Button Functionality
-        const backToTopBtn = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth Scroll for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && document.querySelector(href)) {
-                    e.preventDefault();
-                    document.querySelector(href).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Handle Form Submission
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const name = form.querySelector('input[name="name"]').value;
-            const email = form.querySelector('input[name="email"]').value;
-            const message = form.querySelector('textarea[name="message"]').value;
-            
-            // Create mailto link with subject and body
-            const subject = `New Message from ${name}`;
-            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-            const mailtoLink = `mailto:malavika.madhu3192@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            alert('Thank you for your message! Your email client will open to send the message.');
-            
-            // Reset form
-            form.reset();
-        }
-    </script>
+  <script src="js/lightbox.js"></script>
 </body>
 </html>
-
-
