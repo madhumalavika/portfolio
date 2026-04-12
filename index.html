@@ -91,10 +91,69 @@
             text-decoration: none;
             transition: opacity 0.3s;
             font-weight: 500;
+            position: relative;
         }
 
         .nav-links a:hover {
             opacity: 0.8;
+        }
+
+        /* Tooltip / Pop-up Effect */
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: rgba(37, 99, 235, 0.95);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 100;
+            margin-bottom: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links a:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Arrow for tooltip */
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% - 2px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid rgba(37, 99, 235, 0.95);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 101;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            visibility: visible;
         }
 
         .theme-toggle {
@@ -761,10 +820,10 @@
             <div class="logo">📊 Malavika Madhu</div>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#projects" data-tooltip="View My Projects">Projects</a></li>
+                    <li><a href="#skills" data-tooltip="Technical Skills">Skills</a></li>
+                    <li><a href="#certifications" data-tooltip="Certifications">Certifications</a></li>
+                    <li><a href="#contact" data-tooltip="Get In Touch">Contact</a></li>
                 </ul>
                 <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
             </div>
@@ -1254,7 +1313,8 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p class="footer-text">© 2026 Data Analytics Portfolio. Specialized in Power BI, Business Intelligence & Data Analysis.</p>
+            <p class="footer-text">© 2026 Malavika Madhu. All Rights Reserved.</p>
+            <p class="footer-text" style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem;">Specialized in Power BI, Business Intelligence & Data Analysis</p>
         </div>
     </footer>
 
