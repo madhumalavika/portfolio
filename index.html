@@ -1129,7 +1129,7 @@
         const currentTheme = localStorage.getItem('theme') || 'light';
         if (currentTheme === 'dark') {
             bodyElement.classList.add('dark-mode');
-            themeToggle.textContent = '🙘';
+            themeToggle.textContent = '☀️';
         }
 
         // Theme toggle click handler
@@ -1138,7 +1138,7 @@
             
             // Update toggle button text and save preference
             if (bodyElement.classList.contains('dark-mode')) {
-                themeToggle.textContent = '🙘';
+                themeToggle.textContent = '☀️';
                 localStorage.setItem('theme', 'dark');
             } else {
                 themeToggle.textContent = '🌙';
@@ -1149,7 +1149,7 @@
         // Prefers color scheme detection
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
             bodyElement.classList.add('dark-mode');
-            themeToggle.textContent = '🙘';
+            themeToggle.textContent = '☀️';
         }
     </script>
 </body>
