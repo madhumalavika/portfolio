@@ -25,7 +25,8 @@ portfolio/
 │       ├── airbnb/      # Airbnb Performance dashboards (3 images)
 │       ├── cricket/     # Cricket Data Analysis dashboards (3 images)
 │       ├── snowflake/   # Panic Attack Study dashboards (4 images)
-│       └── hr/          # HR Analytics dashboards (1 image)
+│       ├── hr/          # HR Analytics dashboards (1 image)
+│       └── Uber Performance Analysis/  # Uber Performance Analysis dashboards (3 images)
 └── README.md            # This file
 ```
 
@@ -56,6 +57,12 @@ portfolio/
 - **Tools**: Power BI, KPIs, HR Metrics
 - **Description**: HR dashboard tracking employee attendance and workforce analytics
 - **GitHub**: [hr-analytics-dashboard](https://github.com/madhumalavika/hr-analytics-dashboard)
+
+### 5. Uber Performance Analysis
+- **Slides**: 3 (Overview, Performance, Metrics)
+- **Tools**: Power BI, DAX, SQL Analytics
+- **Description**: Comprehensive ride-sharing analytics dashboard analyzing Uber trip data, driver performance, and revenue metrics
+- **GitHub**: [uber-performance-analysis](https://github.com/madhumalavika/uber-performance-analysis)
 
 ## � Dark Mode
 
